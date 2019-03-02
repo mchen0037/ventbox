@@ -19,6 +19,10 @@ class HelloWorld extends Component{
         is the basic syntax to define compoenents that we will use throughout
         our code. */}
         <h1>Hello World!</h1>
+        <p1>Welcome to Ventbox! Is the world just unfair sometimes? 
+            Did that one guy cut you off and you just gotta tell someone about it?
+            Look No More! Ventbox is your place to vent, fume , or just chat! Whatever you heart desires
+            post it here anonymously and worry free! </p1>
       </div>
     );
   }
@@ -34,10 +38,16 @@ class HelloWorld extends Component{
 class SemanticButton extends Component {
   render() {
     return(
-      <Button>Button!</Button>
+      <div>
+        
+        <Button>Button!</Button>
+      </div>
     );
   }
 }
+
+
+
 // There are a ton of other things that semantic-ui provides--Groups, Stacks,
 // Navbars, etc. We can play around with them and make our webiste pretty.
 // =============================================================================
@@ -78,6 +88,26 @@ class FunctionalButton extends Component {
   }
 }
 // =============================================================================
+
+// class Post extends Component{
+//   render(){
+//     return (
+
+//       )
+
+//   }
+// }
+
+class Postbutton extends Component{
+  render(){
+    return (
+            <Button onClick={this.props.handleClick}>{this.props.text}</Button>
+
+      );
+
+  }
+}
+
 
 // ============================PART FIVE========================================
 // Now let's try calling an endpoint from our front end! Start by taking a look
@@ -122,7 +152,7 @@ class Examples extends Component {
   constructor() {
     super()
     this.state = {
-      number: 30
+      number: 30,
     }
     // We need to add this for our functions --tbh not too sure why lol
     this.decreaseStateNumber = this.decreaseStateNumber.bind(this);
@@ -158,6 +188,8 @@ class Examples extends Component {
           <FunctionalButton text="+" handleClick={this.increaseStateNumber}/>
         </div>
         <div>5: Do you like Thai Food? <TwoButtons/></div>
+        <div> <Postbutton text="Post" />
+        </div>
       </div>
     );
   }
