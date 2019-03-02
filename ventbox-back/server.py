@@ -1,5 +1,7 @@
 from flask import Flask, request
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
 
 # I'm not the best at Flask (or React.. (or anything, but.))
 # I think there's a lot of different ways to use flask--we can render HTML
@@ -35,6 +37,7 @@ ANSWER_YES = "Thai food is awesome!!"
 ANSWER_NO = "Please leave."
 @app.route("/thaifood/<string:ans>")
 def thaifood(ans):
+    print('hi')
     # Basically, we want our 'yes' button to send the user to our /thaifood/yes
     # page and we want our 'no' button to send them to /thaifood/no
     if ans == "yes":
