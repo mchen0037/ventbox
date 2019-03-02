@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // Make sure you import this in order to use things from semantic
-import {Button} from 'semantic-ui-react';
+import {Button, Card} from 'semantic-ui-react';
 // Import axios for part 5.
 import axios from 'axios';
 
@@ -115,6 +115,23 @@ class TwoButtons extends Component {
     );
   }
 }
+
+class Post extends Component {
+  render() {
+    return(
+      <div>
+        <Card>
+          <Card.Content>
+            <Card.Header content="This is a Post."/>
+            <Card.Meta content="tags here?"/>
+            <Card.Description content="Dude.. this Guanxsi Jasmine Green tea from
+              Emtea, steeped for 8 minutes is DABOMB.COM"/>
+          </Card.Content>
+        </Card>
+      </div>
+    );
+  }
+}
 // =============================================================================
 
 class Examples extends Component {
@@ -158,6 +175,7 @@ class Examples extends Component {
           <FunctionalButton text="+" handleClick={this.increaseStateNumber}/>
         </div>
         <div>5: Do you like Thai Food? <TwoButtons/></div>
+        <Post/>
       </div>
     );
   }
