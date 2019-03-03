@@ -26,7 +26,7 @@ class Post extends Component {
 
   render() {
     return (
-      <div>
+      <div class = 'P'>
         <Card>
           <Card.Content>
             <Card.Header content={this.props.text} />
@@ -46,7 +46,7 @@ class Post extends Component {
 class PostList extends Component {
   render() {
     return (
-      <div>
+      <div class = 'listP'>
         {this.props.data.map(d => (
           <Post text={d.text} tags={d.tags} likes={d.likes} />
         ))}

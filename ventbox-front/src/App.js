@@ -4,6 +4,8 @@ import Examples from "./components/examples.jsx";
 import PostList from "./components/PostList.jsx";
 import { Card } from "semantic-ui-react";
 
+import "./assets/postl.css";
+
 let fakeData = {
   data: [
     {
@@ -40,9 +42,11 @@ class App extends Component {
   render() {
     return (
       <div>
+
         <Examples/>
         <PostList data={this.state.data} />
       </div>
+
     );
   }
 }
