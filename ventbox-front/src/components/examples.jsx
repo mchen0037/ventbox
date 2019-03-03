@@ -119,7 +119,7 @@ class TwoButtons extends Component {
 class Post extends Component {
   render() {
     return(
-      <div>
+      <div classname>
         <Card>
           <Card.Content>
             <Card.Header content="This is a Post."/>
