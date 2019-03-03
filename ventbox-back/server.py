@@ -2,6 +2,7 @@ from flask import Flask, request
 from flask_cors import CORS
 import psycopg2
 import os
+from getPolarity import *
 
 app = Flask(__name__)
 CORS(app)
@@ -97,9 +98,7 @@ def vent():
     # access those variables here from the JSON.
     vent_text = request.get_json()["text"]
 
-    # Do stuff with the text
-    # 1. Determine polarity (black box, mighty will do this )
-    polarity = 0
+    polarity = getPolarity(vent_text)
 
     # 2. Parse out the tags (black box, mighty will do this)
     tags = 'test'
