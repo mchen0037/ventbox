@@ -99,11 +99,15 @@ class TwoButtons extends Component {
   }
 
   callBackendNo() {
-    axios.get(
-      BACKEND_SERVER + '/thaifood/no'
-    ).then(res => {
-      console.log(res.data)
-    })
+    // axios.get(
+    //   BACKEND_SERVER + '/thaifood/no'
+    // ).then(res => {
+    //   console.log(res.data)
+    // })
+    axios.post(BACKEND_SERVER + '/vent', { text: "My hair looks so nice today!!!"})
+      .then(function(response) {
+        console.log(response)
+      });
   }
 
   render() {

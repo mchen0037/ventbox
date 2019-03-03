@@ -40,6 +40,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Examples/>
         <PostList data={this.state.data} />
       </div>
     );
