@@ -16,7 +16,7 @@ class Refresh extends Component {
   render() {
     return(
     <div class = 'refresh'>
-      <Button onClick={this.callRefresh}><i class="refresh icon"/>Refresh</Button>
+      <Button onClick={this.callRefresh}>Refresh <i class = 'button' class="refresh icon"/></Button>
 
     </div>
     )

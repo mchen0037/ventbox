@@ -111,6 +111,26 @@ def vent():
 
     return "hello"
 
+@app.route('/refresh')
+def refresh():
+    # refresh_text = request.get_json()["text"]
+    cur = conn.cursor()
+    cur.execute("select * from posts order by timestamp desc limit 10")
+    r = cur.fetchall()
+    if len(r) == 0:
+        return "Oh no"
+    else:
+        return "haha"
+
+
+
+    # Query the database for new updates. Return the newest 10 posts in the DB.
+    # cur = conn.cursor()
+    # cur.execute(SELECT .. FROM posts ...)
+
+    # jsonify
+    return "posts"
+
 # We can use this to run the app on a specific server/port.
 if __name__ == "__main__":
     DBHOSTNAME = os.getenv('DBHOSTNAME')

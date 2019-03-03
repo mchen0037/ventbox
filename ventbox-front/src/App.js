@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Examples from "./components/examples.jsx";
 import PostList from "./components/PostList.jsx";
+import Refresh from "./components/refresh.jsx";
 import { Card } from "semantic-ui-react";
 
 import "./assets/postl.css";
@@ -43,7 +44,7 @@ class App extends Component {
     return (
       <div>
 
-        <Examples/>
+        <Refresh/>
         <PostList data={this.state.data} />
       </div>
 
