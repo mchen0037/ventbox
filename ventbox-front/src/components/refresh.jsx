@@ -1,22 +1,11 @@
 import React, { Component } from "react";
 import { Button } from "semantic-ui-react";
-import axios from 'axios';
-
-const BACKEND_SERVER = "http://0.0.0.0:4000";
 
 class Refresh extends Component {
-  async callRefresh(){
-    axios.get(
-      BACKEND_SERVER + '/refresh'
-    ).then(res => {
-      console.log(res.data)
-    })
-  }
-
   render() {
     return(
       <div>
-        <Button onClick={this.callRefresh}>
+        <Button onClick={this.props.refresh}>
           Refresh
           <i class="refresh icon"/>
         </Button>

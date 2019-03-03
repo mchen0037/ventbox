@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-// import Examples from "./components/examples.jsx";
 import PostList from "./components/PostList.jsx";
 import Refresh from "./components/refresh.jsx";
 import Poster from "./components/Poster.jsx";
+import axios from 'axios';
 import { Grid } from "semantic-ui-react";
 import "./assets/postl.css";
-import "./App.css";
+
+const BACKEND_SERVER = "http://0.0.0.0:4000";
 
 let fakeData = {
   data: [
@@ -40,6 +41,15 @@ class App extends Component {
       data: fakeData.data
     };
   }
+
+  async callRefresh(){
+    axios.get(
+      BACKEND_SERVER + '/refresh'
+    ).then(res => {
+      console.log(res.data)
+    })
+  }
+
   render() {
     return (
       <div>
@@ -47,7 +57,7 @@ class App extends Component {
           <Grid columns='one' divided>
             <Grid.Row>
               <Grid.Column>
-                <Refresh/>
+                <Refresh refresh={this.callRefresh}/>
               </Grid.Column>
             </Grid.Row>
 
