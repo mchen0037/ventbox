@@ -117,13 +117,8 @@ if __name__ == "__main__":
     USER = os.getenv('USER')
     DATABASE = os.getenv('DATABASE')
     PASSWORD = os.getenv('PASSWORD')
-    print(DBHOSTNAME)
-    print (USER)
-    print (PASSWORD)
-    print (DATABASE)
-    conn = psycopg2.connect(host=DBHOSTNAME, database=DATABASE, user=USER, password=PASSWORD)
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM tag;")
-    print(cur.fetchall())
 
+    conn = psycopg2.connect(host=DBHOSTNAME, database=DATABASE, user=USER, password=PASSWORD)
+
+    print('Successfully connected to database!')
     app.run(debug=True,host='0.0.0.0', port=4000)
