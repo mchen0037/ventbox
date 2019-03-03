@@ -1,7 +1,11 @@
 from flask import Flask, request
 from flask_cors import CORS
+import psycopg2
+import os
+
 app = Flask(__name__)
 CORS(app)
+conn = None
 
 # I'm not the best at Flask (or React.. (or anything, but.))
 # I think there's a lot of different ways to use flask--we can render HTML
@@ -87,6 +91,40 @@ def grades():
             str(info[student][classname]))
     return out
 
+@app.route('/vent', methods = ['POST'])
+def vent():
+    # Depending on what the text is from the POST (from the backend), we can
+    # access those variables here from the JSON.
+    vent_text = request.get_json()["text"]
+
+    # Do stuff with the text
+    # 1. Determine polarity (black box, mighty will do this )
+    polarity = 0
+
+    # 2. Parse out the tags (black box, mighty will do this)
+    tags = 'test'
+
+
+    # 3. Insert into DB. Timestamp:
+    # https://stackoverflow.com/questions/38245025/how-to-insert-current-datetime-in-postgresql-insert-query
+    likes = 0
+
+
+    return "hello"
+
 # We can use this to run the app on a specific server/port.
 if __name__ == "__main__":
+    DBHOSTNAME = os.getenv('DBHOSTNAME')
+    USER = os.getenv('USER')
+    DATABASE = os.getenv('DATABASE')
+    PASSWORD = os.getenv('PASSWORD')
+    print(DBHOSTNAME)
+    print (USER)
+    print (PASSWORD)
+    print (DATABASE)
+    conn = psycopg2.connect(host=DBHOSTNAME, database=DATABASE, user=USER, password=PASSWORD)
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM tag;")
+    print(cur.fetchall())
+
     app.run(debug=True,host='0.0.0.0', port=4000)
