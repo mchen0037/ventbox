@@ -6,20 +6,19 @@
 
 .listP{
   position: relative;
-  left:100px;
+  left:10px;
   top:20px;
 }
 
 .refresh{
   position: relative;
-  left: 100px;
+  left: 10px;
   /* top: 10px; */
 }
 
-.button{
-
-  left: 100px;
-}
+/* .button{
+  left: 10px;
+} */
 
 /* .rebutton{
   position: relative;

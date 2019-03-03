@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import "./App.css";
-import Examples from "./components/examples.jsx";
+// import Examples from "./components/examples.jsx";
 import PostList from "./components/PostList.jsx";
 import Refresh from "./components/refresh.jsx";
-import { Card } from "semantic-ui-react";
-
+import Poster from "./components/Poster.jsx";
+import { Grid } from "semantic-ui-react";
 import "./assets/postl.css";
+import "./App.css";
 
 let fakeData = {
   data: [
@@ -43,9 +43,27 @@ class App extends Component {
   render() {
     return (
       <div>
+        <center>
+          <Grid columns='one' divided>
+            <Grid.Row>
+              <Grid.Column>
+                <Refresh/>
+              </Grid.Column>
+            </Grid.Row>
 
-        <Refresh/>
-        <PostList data={this.state.data} />
+            <Grid.Row>
+              <Grid.Column>
+                <PostList data={this.state.data}/>
+              </Grid.Column>
+            </Grid.Row>
+
+            <Grid.Row>
+              <Grid.Column>
+                <Poster/>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </center>
       </div>
 
     );

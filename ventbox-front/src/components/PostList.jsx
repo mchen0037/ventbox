@@ -26,16 +26,17 @@ class Post extends Component {
 
   render() {
     return (
-      <div class = 'P'>
+      <div>
         <Card>
           <Card.Content>
-            <Card.Header content={this.props.text} />
-            <Card.Meta content={this.props.tags} />
+            <Card.Header content={this.props.text}/>
+            <Card.Meta content={this.props.tags}/>
           </Card.Content>
-          <div class="pbutton">
-            <FunctionalButton handleClick={this.increaseStateNumber} />
-            <i class="heart icon" />
-            {this.props.likes}
+          <div>
+            <Button handleClick={this.increaseStateNumber}>
+              <i class="heart icon"/>
+              {this.props.likes}
+            </Button>
           </div>
         </Card>
       </div>
@@ -46,7 +47,7 @@ class Post extends Component {
 class PostList extends Component {
   render() {
     return (
-      <div class = 'listP'>
+      <div>
         {this.props.data.map(d => (
           <Post text={d.text} tags={d.tags} likes={d.likes} />
         ))}

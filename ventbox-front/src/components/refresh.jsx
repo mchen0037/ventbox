@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button} from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import axios from 'axios';
 
 const BACKEND_SERVER = "http://0.0.0.0:4000";
@@ -15,12 +15,13 @@ class Refresh extends Component {
 
   render() {
     return(
-    <div class = 'refresh'>
-      <Button onClick={this.callRefresh}>Refresh <i class = 'button' class="refresh icon"/></Button>
-
-    </div>
+      <div>
+        <Button onClick={this.callRefresh}>
+          Refresh
+          <i class="refresh icon"/>
+        </Button>
+      </div>
     )
-
   }
 }
 
