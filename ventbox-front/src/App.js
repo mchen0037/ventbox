@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Post from "./components/Post.jsx";
 import Refresh from "./components/refresh.jsx";
-import Poster from "./components/Poster.jsx";
-import axios from 'axios';
+import InputBox from "./components/InputBox.jsx";
+import axios from "axios";
 import { Grid } from "semantic-ui-react";
 import "./assets/postl.css";
 
@@ -42,51 +42,47 @@ class App extends Component {
     };
   }
 
-  async callRefresh(){
-    axios.get(
-      BACKEND_SERVER + '/refresh'
-    ).then(res => {
-      console.log(res.data)
-    })
+  async callRefresh() {
+    axios.get(BACKEND_SERVER + "/refresh").then(res => {
+      console.log(res.data);
+    });
   }
 
   render() {
     return (
       <div>
-          <Grid columns='one' centered>
-            <Grid.Row>
-              <Grid.Column width={4}>
-              </Grid.Column>
-            </Grid.Row>
+        <Grid columns="one" centered>
+          <Grid.Row>
+            <Grid.Column width={4} />
+          </Grid.Row>
 
-            <Grid.Row>
-              <Grid.Column width={4}>
-                <center>
-                  <Refresh refresh={this.callRefresh}/>
-                </center>
-              </Grid.Column>
-            </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={4}>
+              <center>
+                <Refresh refresh={this.callRefresh} />
+              </center>
+            </Grid.Column>
+          </Grid.Row>
 
-            {this.state.data.map(d => (
-              <Grid.Row>
-                <Grid.Column width={4}>
-                  <center>
-                    <Post text={d.text} polarity={d.polarity} likes={d.likes}t/>
-                  </center>
-                </Grid.Column>
-              </Grid.Row>
-            ))}
-
+          {this.state.data.map(d => (
             <Grid.Row>
               <Grid.Column width={4}>
                 <center>
-                  <Poster/>
+                  <Post text={d.text} polarity={d.polarity} likes={d.likes} t />
                 </center>
               </Grid.Column>
             </Grid.Row>
-          </Grid>
+          ))}
+
+          <Grid.Row>
+            <Grid.Column width={4}>
+              <center>
+                <InputBox />
+              </center>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </div>
-
     );
   }
 }
