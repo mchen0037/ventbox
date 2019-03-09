@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PostList from "./components/PostList.jsx";
+import Post from "./components/Post.jsx";
 import Refresh from "./components/refresh.jsx";
 import Poster from "./components/Poster.jsx";
 import axios from 'axios';
@@ -13,23 +13,23 @@ let fakeData = {
     {
       text: "Man, this Guanxi Jasmine Green tea from Emtea is the dabomb.com!",
       likes: 37,
-      tags: "tea"
+      polarity: 3.2
     },
     {
       text: "Yiying is the best <3",
       likes: 999999999999999999999999999,
-      tags: ["Yiying"]
+      polarity: 2.7
     },
     {
       text:
         "I love thai food from New Thai Cuisine!! Today, we got pho, red curry, and pad thai.",
       likes: 12,
-      tags: ["food", "pho", "curry"]
+      polarity: 13
     },
     {
       text: "Jesus is probably going to win HackMerced..",
       likes: 93,
-      tags: ["Jesus", "HackMerced"]
+      polarity: -2
     }
   ]
 };
@@ -53,27 +53,38 @@ class App extends Component {
   render() {
     return (
       <div>
-        <center>
-          <Grid columns='one' divided>
+          <Grid columns='one' centered>
             <Grid.Row>
-              <Grid.Column>
-                <Refresh refresh={this.callRefresh}/>
+              <Grid.Column width={4}>
               </Grid.Column>
             </Grid.Row>
 
             <Grid.Row>
-              <Grid.Column>
-                <PostList data={this.state.data}/>
+              <Grid.Column width={4}>
+                <center>
+                  <Refresh refresh={this.callRefresh}/>
+                </center>
               </Grid.Column>
             </Grid.Row>
 
+            {this.state.data.map(d => (
+              <Grid.Row>
+                <Grid.Column width={4}>
+                  <center>
+                    <Post text={d.text} polarity={d.polarity} likes={d.likes}t/>
+                  </center>
+                </Grid.Column>
+              </Grid.Row>
+            ))}
+
             <Grid.Row>
-              <Grid.Column>
-                <Poster/>
+              <Grid.Column width={4}>
+                <center>
+                  <Poster/>
+                </center>
               </Grid.Column>
             </Grid.Row>
           </Grid>
-        </center>
       </div>
 
     );
