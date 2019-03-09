@@ -38,9 +38,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: fakeData.data
+      data: []
     };
     this.callRefresh = this.callRefresh.bind(this);
+    this.callRefresh()
   }
 
   async callRefresh() {
