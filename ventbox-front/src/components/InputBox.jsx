@@ -18,15 +18,10 @@ class InputBox extends Component {
     this.setState({ value: event.target.value });
   }
 
-  handleSubmit(event) {
-    // console.log(event);
-    // alert("A post was submitted: " + this.state.value);
-    axios
-      .post(BACKEND_SERVER + "/vent", { text: this.state.value })
-      .then(function(response) {
-        console.log(response);
-      });
-
+  async handleSubmit(event) {
+    let result = await axios.post(
+      BACKEND_SERVER + "/vent", { text: this.state.value });
+    this.props.refresh();
     event.preventDefault();
   }
 

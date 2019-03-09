@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import psycopg2
 import os
@@ -97,18 +97,12 @@ def vent():
     # Depending on what the text is from the POST (from the backend), we can
     # access those variables here from the JSON.
     vent_text = request.get_json()["text"]
-
     polarity = getPolarity(vent_text)
-
-
-    # 3. Insert into DB. Timestamp:
-    # https://stackoverflow.com/questions/38245025/how-to-insert-current-datetime-in-postgresql-insert-query
     likes = 0
 
     cur = conn.cursor()
     data = (vent_text, likes, polarity)
     cur.execute("""INSERT INTO vents(vent, likes, polarity, timestamp) VALUES(%s, %s, %s, now())""", data)
-#    cur.execute("SELECT * FROM vents")
     # commit is very important:
     # https://stackoverflow.com/questions/9075349/using-insert-with-a-postgresql-database-using-python
     conn.commit()
@@ -118,23 +112,24 @@ def vent():
 
 @app.route('/refresh')
 def refresh():
-    # refresh_text = request.get_json()["text"]
     cur = conn.cursor()
-    cur.execute("select * from posts order by timestamp desc limit 10")
-    r = cur.fetchall()
-    if len(r) == 0:
-        return "Oh no"
+    cur.execute("""
+        SELECT vent as vent, polarity, likes
+        FROM vents
+        ORDER BY timestamp DESC
+        LIMIT 5
+        """)
+    result = cur.fetchall()
+
+    posts = []
+
+    for row in result:
+        posts.append({"text": row[0], "polarity": row[1], "likes": row[2]})
+
+    if len(row) == 0:
+        return "Oh no error!"
     else:
-        return "haha"
-
-
-
-    # Query the database for new updates. Return the newest 10 posts in the DB.
-    # cur = conn.cursor()
-    # cur.execute(SELECT .. FROM posts ...)
-
-    # jsonify
-    return "posts"
+        return jsonify(posts)
 
 # We can use this to run the app on a specific server/port.
 if __name__ == "__main__":

@@ -40,15 +40,16 @@ class App extends Component {
     this.state = {
       data: fakeData.data
     };
+    this.callRefresh = this.callRefresh.bind(this);
   }
 
   async callRefresh() {
-    axios.get(BACKEND_SERVER + "/refresh").then(res => {
-      console.log(res.data);
-    });
+    let result = await axios.get(BACKEND_SERVER + "/refresh");
+    await this.setState({data: result.data})
   }
 
   render() {
+    console.log(this.state)
     return (
       <div>
         <Grid columns="one" centered>
@@ -77,7 +78,7 @@ class App extends Component {
           <Grid.Row>
             <Grid.Column width={4}>
               <center>
-                <InputBox />
+                <InputBox refresh={this.callRefresh}/>
               </center>
             </Grid.Column>
           </Grid.Row>
