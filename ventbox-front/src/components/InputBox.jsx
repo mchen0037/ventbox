@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Input } from "semantic-ui-react";
+import axios from "axios";
+
+const BACKEND_SERVER = "http://0.0.0.0:4000";
 
 class InputBox extends Component {
   constructor(props) {
@@ -16,8 +19,14 @@ class InputBox extends Component {
   }
 
   handleSubmit(event) {
-    console.log(event);
-    alert("A post was submitted: " + this.state.value);
+    // console.log(event);
+    // alert("A post was submitted: " + this.state.value);
+    axios
+      .post(BACKEND_SERVER + "/vent", { text: this.state.value })
+      .then(function(response) {
+        console.log(response);
+      });
+
     event.preventDefault();
   }
 

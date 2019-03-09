@@ -100,13 +100,18 @@ def vent():
 
     polarity = getPolarity(vent_text)
 
-    # 2. Parse out the tags (black box, mighty will do this)
-    tags = 'test'
-
 
     # 3. Insert into DB. Timestamp:
     # https://stackoverflow.com/questions/38245025/how-to-insert-current-datetime-in-postgresql-insert-query
     likes = 0
+
+    cur = conn.cursor()
+    data = (vent_text, likes, polarity)
+    cur.execute("""INSERT INTO vents(vent, likes, polarity, timestamp) VALUES(%s, %s, %s, now())""", data)
+#    cur.execute("SELECT * FROM vents")
+    # commit is very important:
+    # https://stackoverflow.com/questions/9075349/using-insert-with-a-postgresql-database-using-python
+    conn.commit()
 
 
     return "hello"
