@@ -8,32 +8,6 @@ import "./assets/postl.css";
 
 const BACKEND_SERVER = "http://0.0.0.0:4000";
 
-let fakeData = {
-  data: [
-    {
-      text: "Man, this Guanxi Jasmine Green tea from Emtea is the dabomb.com!",
-      likes: 37,
-      polarity: 3.2
-    },
-    {
-      text: "Yiying is the best <3",
-      likes: 999999999999999999999999999,
-      polarity: 2.7
-    },
-    {
-      text:
-        "I love thai food from New Thai Cuisine!! Today, we got pho, red curry, and pad thai.",
-      likes: 12,
-      polarity: 13
-    },
-    {
-      text: "Jesus is probably going to win HackMerced..",
-      likes: 93,
-      polarity: -2
-    }
-  ]
-};
-
 class App extends Component {
   constructor(props) {
     super(props);

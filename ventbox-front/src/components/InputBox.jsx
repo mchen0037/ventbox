@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input } from "semantic-ui-react";
+import { Form } from "semantic-ui-react";
 import axios from "axios";
 
 const BACKEND_SERVER = "http://0.0.0.0:4000";
@@ -8,7 +8,7 @@ class InputBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "Please write your post here!"
+      value: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,25 +19,21 @@ class InputBox extends Component {
   }
 
   async handleSubmit(event) {
+    event.preventDefault();
+
     let result = await axios.post(
       BACKEND_SERVER + "/vent", { text: this.state.value });
     this.props.refresh();
-    event.preventDefault();
+    await this.setState({value: ""})
   }
 
   render() {
     return (
       <div>
-        <Input
-          fluid
-          action={{
-            color: "gray",
-            content: "Submit",
-            onClick: this.handleSubmit
-          }}
-          placeholder={this.state.value}
-          onChange={this.handleChange}
-        />
+        <Form>
+          <Form.TextArea value={this.state.value} onChange={this.handleChange} fluid placeholder='Vent!'/>
+          <Form.Button onClick={this.handleSubmit}>Submit</Form.Button>
+        </Form>
       </div>
     );
   }

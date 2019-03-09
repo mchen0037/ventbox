@@ -5,7 +5,7 @@ class Refresh extends Component {
   render() {
     return(
       <div>
-        <Button onClick={this.props.refresh}>
+        <Button fluid onClick={this.props.refresh}>
           Refresh
           <i class="refresh icon"/>
         </Button>
