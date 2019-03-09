@@ -6,11 +6,13 @@ import { Button, Card } from "semantic-ui-react";
 
 class Post extends Component {
 
+  constructor(props) {
+    super(props);
+    this.increaseStateNumber = this.increaseStateNumber.bind(this);
+  }
+
   increaseStateNumber() {
-    // axios.post(
-    //   BACKEND_SERVER + 'increaseStateNumber'
-    // )
-    console.log('increase number of likes!')
+    console.log(this.props)
   }
 
   render() {
@@ -18,18 +20,18 @@ class Post extends Component {
       <div>
         <Card fluid>
           <Card.Content>
-            <p align='right'>
+            <div align='right'>
               <Card.Meta content={this.props.polarity}/>
-            </p>
+            </div>
             <Card.Description content={this.props.text}/>
           </Card.Content>
           <Card.Content extra>
-            <p align='right'>
+            <div align='right'>
               <Button compact onClick={this.increaseStateNumber}>
-                <i class="heart icon"/>
+                <i className="heart icon"/>
                 {this.props.likes}
               </Button>
-            </p>
+            </div>
           </Card.Content>
         </Card>
       </div>

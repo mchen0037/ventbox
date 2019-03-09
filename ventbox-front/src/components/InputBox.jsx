@@ -21,7 +21,7 @@ class InputBox extends Component {
   async handleSubmit(event) {
     event.preventDefault();
 
-    let result = await axios.post(
+    await axios.post(
       BACKEND_SERVER + "/vent", { text: this.state.value });
     this.props.refresh();
     await this.setState({value: ""})
@@ -31,7 +31,7 @@ class InputBox extends Component {
     return (
       <div>
         <Form>
-          <Form.TextArea value={this.state.value} onChange={this.handleChange} fluid placeholder='Vent!'/>
+          <Form.TextArea value={this.state.value} onChange={this.handleChange} placeholder='Vent!'/>
           <Form.Button onClick={this.handleSubmit}>Submit</Form.Button>
         </Form>
       </div>

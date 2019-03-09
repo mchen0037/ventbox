@@ -23,6 +23,10 @@ class App extends Component {
     await this.setState({data: result.data})
   }
 
+  postLiked(id) {
+    console.log(id)
+  }
+
   render() {
     console.log(this.state)
     return (
@@ -40,11 +44,14 @@ class App extends Component {
             </Grid.Column>
           </Grid.Row>
 
-          {this.state.data.map(d => (
-            <Grid.Row>
+          {this.state.data.map((d) => (
+            <Grid.Row key={d.id}>
               <Grid.Column width={4}>
                 <center>
-                  <Post text={d.text} polarity={d.polarity} likes={d.likes} t />
+                  <Post key={d.id} id={d.id}
+                    text={d.text} polarity={d.polarity} likes={d.likes}
+                    onLike={this.postLiked}
+                  />
                 </center>
               </Grid.Column>
             </Grid.Row>

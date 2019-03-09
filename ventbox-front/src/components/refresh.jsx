@@ -7,7 +7,7 @@ class Refresh extends Component {
       <div>
         <Button fluid onClick={this.props.refresh}>
           Refresh
-          <i class="refresh icon"/>
+          <i className="refresh icon"/>
         </Button>
       </div>
     )

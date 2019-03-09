@@ -114,7 +114,7 @@ def vent():
 def refresh():
     cur = conn.cursor()
     cur.execute("""
-        SELECT vent as vent, polarity, likes
+        SELECT id, vent, polarity, likes
         FROM vents
         ORDER BY timestamp DESC
         LIMIT 5
@@ -124,7 +124,8 @@ def refresh():
     posts = []
 
     for row in result:
-        posts.append({"text": row[0], "polarity": row[1], "likes": row[2]})
+        posts.append(
+            {"id": row[0], "text": row[1], "polarity": row[2], "likes": row[3]})
 
     if len(row) == 0:
         return "Oh no error!"
