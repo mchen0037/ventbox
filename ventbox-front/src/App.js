@@ -9,13 +9,6 @@ import "./assets/postl.css";
 // const BACKEND_SERVER = "http://0.0.0.0:4000";
 const BACKEND_SERVER = "https://ventbox-backend.herokuapp.com/";
 
-// second grid.row - creating all post: by using map;
-// modify post-liked so it makes a call to the backend;
-// end point for like.
-// make /like which then [query] 1: query the likes for the post id # of likes;
-//                                2: update that row with likes = likes + 1;
-//                                conn.commit();
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -39,7 +32,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <Grid columns="one" centered>
