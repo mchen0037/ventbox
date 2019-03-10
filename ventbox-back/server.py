@@ -8,6 +8,12 @@ app = Flask(__name__)
 CORS(app)
 conn = None
 
+DBHOSTNAME = os.environ['DBHOSTNAME']
+USER = os.environ['USER']
+DATABASE = os.environ['DATABASE']
+PASSWORD = os.environ['PASSWORD']
+test = os.environ['re']
+
 # I'm not the best at Flask (or React.. (or anything, but.))
 # I think there's a lot of different ways to use flask--we can render HTML
 # pages when we call a certain function, or we can just use it as a
@@ -96,6 +102,7 @@ def grades():
 def vent():
     # Depending on what the text is from the POST (from the backend), we can
     # access those variables here from the JSON.
+    conn = connectDB()
     vent_text = request.get_json()["text"]
     polarity = getPolarity(vent_text)
     likes = 0
@@ -106,11 +113,13 @@ def vent():
     # commit is very important:
     # https://stackoverflow.com/questions/9075349/using-insert-with-a-postgresql-database-using-python
     conn.commit()
+    cur.close()
 
     return "hello"
 
 @app.route('/refresh')
 def refresh():
+    conn = connectDB()
     cur = conn.cursor()
     cur.execute("""
         SELECT id, vent, polarity, likes
@@ -126,6 +135,7 @@ def refresh():
         posts.append(
             {"id": row[0], "text": row[1], "polarity": row[2], "likes": row[3]})
 
+    cur.close()
     if len(row) == 0:
         return "Oh no error!"
     else:
@@ -135,21 +145,24 @@ def refresh():
 def likes():
     post_id = request.get_json()["id"]
 
+    conn = connectDB()
     cur = conn.cursor()
 
     cur.execute("""UPDATE vents SET likes = likes + 1 WHERE id = %s""", [post_id])
     conn.commit()
+    cur.close()
 
     return "???"
 
 
+def connectDB():
+    conn = psycopg2.connect(host=DBHOSTNAME, database=DATABASE, user=USER, password=PASSWORD)
+    return conn
+
 # We can use this to run the app on a specific server/port.
 if __name__ == "__main__":
-    DBHOSTNAME = os.getenv('DBHOSTNAME')
-    USER = os.getenv('USER')
-    DATABASE = os.getenv('DATABASE')
-    PASSWORD = os.getenv('PASSWORD')
 
+    print('testing >>>>>>>>>>>>>', test, DBHOSTNAME)
     conn = psycopg2.connect(host=DBHOSTNAME, database=DATABASE, user=USER, password=PASSWORD)
 
     print('Successfully connected to database!')
