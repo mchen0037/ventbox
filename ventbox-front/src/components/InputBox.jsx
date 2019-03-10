@@ -22,6 +22,10 @@ class InputBox extends Component {
   async handleSubmit(event) {
     event.preventDefault();
 
+    if (this.state.value === "") {
+      return;
+    }
+
     await axios.post(BACKEND_SERVER + "/vent", { text: this.state.value });
     this.props.refresh();
     await this.setState({ value: "" });
