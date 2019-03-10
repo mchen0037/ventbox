@@ -8,6 +8,13 @@ import "./assets/postl.css";
 
 const BACKEND_SERVER = "http://0.0.0.0:4000";
 
+// second grid.row - creating all post: by using map;
+// modify post-liked so it makes a call to the backend;
+// end point for like.
+// make /like which then [query] 1: query the likes for the post id # of likes;
+//                                2: update that row with likes = likes + 1;
+//                                conn.commit();
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -15,20 +22,23 @@ class App extends Component {
       data: []
     };
     this.callRefresh = this.callRefresh.bind(this);
-    this.callRefresh()
+    this.callRefresh();
+
+    this.postLiked = this.postLiked.bind(this);
   }
 
   async callRefresh() {
     let result = await axios.get(BACKEND_SERVER + "/refresh");
-    await this.setState({data: result.data})
+    await this.setState({ data: result.data });
   }
 
-  postLiked(id) {
-    console.log(id)
+  async postLiked(id) {
+    await axios.post(BACKEND_SERVER + "/likes", { id: id });
+    this.callRefresh();
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.state);
     return (
       <div>
         <Grid columns="one" centered>
@@ -44,12 +54,16 @@ class App extends Component {
             </Grid.Column>
           </Grid.Row>
 
-          {this.state.data.map((d) => (
+          {this.state.data.map(d => (
             <Grid.Row key={d.id}>
               <Grid.Column width={4}>
                 <center>
-                  <Post key={d.id} id={d.id}
-                    text={d.text} polarity={d.polarity} likes={d.likes}
+                  <Post
+                    key={d.id}
+                    id={d.id}
+                    text={d.text}
+                    polarity={d.polarity}
+                    likes={d.likes}
                     onLike={this.postLiked}
                   />
                 </center>
@@ -60,7 +74,7 @@ class App extends Component {
           <Grid.Row>
             <Grid.Column width={4}>
               <center>
-                <InputBox refresh={this.callRefresh}/>
+                <InputBox refresh={this.callRefresh} />
               </center>
             </Grid.Column>
           </Grid.Row>

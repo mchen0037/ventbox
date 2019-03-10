@@ -107,7 +107,6 @@ def vent():
     # https://stackoverflow.com/questions/9075349/using-insert-with-a-postgresql-database-using-python
     conn.commit()
 
-
     return "hello"
 
 @app.route('/refresh')
@@ -131,6 +130,18 @@ def refresh():
         return "Oh no error!"
     else:
         return jsonify(posts)
+
+@app.route('/likes', methods = ['POST'])
+def likes():
+    post_id = request.get_json()["id"]
+
+    cur = conn.cursor()
+
+    cur.execute("""UPDATE vents SET likes = likes + 1 WHERE id = %s""", [post_id])
+    conn.commit()
+
+    return "???"
+
 
 # We can use this to run the app on a specific server/port.
 if __name__ == "__main__":

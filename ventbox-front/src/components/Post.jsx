@@ -5,14 +5,13 @@ import { Button, Card } from "semantic-ui-react";
 // const BACKEND_SERVER = "http://0.0.0.0:4000";
 
 class Post extends Component {
-
   constructor(props) {
     super(props);
     this.increaseStateNumber = this.increaseStateNumber.bind(this);
   }
 
   increaseStateNumber() {
-    console.log(this.props)
+    this.props.onLike(this.props.id);
   }
 
   render() {
@@ -20,15 +19,15 @@ class Post extends Component {
       <div>
         <Card fluid>
           <Card.Content>
-            <div align='right'>
-              <Card.Meta content={this.props.polarity}/>
+            <div align="right">
+              <Card.Meta content={this.props.polarity} />
             </div>
-            <Card.Description content={this.props.text}/>
+            <Card.Description content={this.props.text} />
           </Card.Content>
           <Card.Content extra>
-            <div align='right'>
+            <div align="right">
               <Button compact onClick={this.increaseStateNumber}>
-                <i className="heart icon"/>
+                <i className="heart icon" />
                 {this.props.likes}
               </Button>
             </div>

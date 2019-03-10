@@ -21,17 +21,20 @@ class InputBox extends Component {
   async handleSubmit(event) {
     event.preventDefault();
 
-    await axios.post(
-      BACKEND_SERVER + "/vent", { text: this.state.value });
+    await axios.post(BACKEND_SERVER + "/vent", { text: this.state.value });
     this.props.refresh();
-    await this.setState({value: ""})
+    await this.setState({ value: "" });
   }
 
   render() {
     return (
       <div>
         <Form>
-          <Form.TextArea value={this.state.value} onChange={this.handleChange} placeholder='Vent!'/>
+          <Form.TextArea
+            value={this.state.value}
+            onChange={this.handleChange}
+            placeholder="Vent!"
+          />
           <Form.Button onClick={this.handleSubmit}>Submit</Form.Button>
         </Form>
       </div>
