@@ -1,13 +1,13 @@
 {
   "main.css": "/ventbox/static/css/main.06ede0eb.chunk.css",
-  "main.js": "/ventbox/static/js/main.aeec7a8c.chunk.js",
-  "main.js.map": "/ventbox/static/js/main.aeec7a8c.chunk.js.map",
+  "main.js": "/ventbox/static/js/main.ee483c5d.chunk.js",
+  "main.js.map": "/ventbox/static/js/main.ee483c5d.chunk.js.map",
   "runtime~main.js": "/ventbox/static/js/runtime~main.2179f2dc.js",
   "runtime~main.js.map": "/ventbox/static/js/runtime~main.2179f2dc.js.map",
   "static/js/2.0bd248f4.chunk.js": "/ventbox/static/js/2.0bd248f4.chunk.js",
   "static/js/2.0bd248f4.chunk.js.map": "/ventbox/static/js/2.0bd248f4.chunk.js.map",
   "index.html": "/ventbox/index.html",
-  "precache-manifest.7d20ae8dc10eba698b4055a485703c5d.js": "/ventbox/precache-manifest.7d20ae8dc10eba698b4055a485703c5d.js",
+  "precache-manifest.eead4c7f7182ffbc64f014816d115611.js": "/ventbox/precache-manifest.eead4c7f7182ffbc64f014816d115611.js",
   "service-worker.js": "/ventbox/service-worker.js",
   "static/css/main.06ede0eb.chunk.css.map": "/ventbox/static/css/main.06ede0eb.chunk.css.map"
 }

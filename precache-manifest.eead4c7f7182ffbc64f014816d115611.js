@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/ventbox/static/js/runtime~main.2179f2dc.js"
   },
   {
-    "revision": "aeec7a8c7c74d55ff8d9",
-    "url": "/ventbox/static/js/main.aeec7a8c.chunk.js"
+    "revision": "ee483c5db39caf4ec9f7",
+    "url": "/ventbox/static/js/main.ee483c5d.chunk.js"
   },
   {
     "revision": "0bd248f46f1b721aab31",
     "url": "/ventbox/static/js/2.0bd248f4.chunk.js"
   },
   {
-    "revision": "aeec7a8c7c74d55ff8d9",
+    "revision": "ee483c5db39caf4ec9f7",
     "url": "/ventbox/static/css/main.06ede0eb.chunk.css"
   },
   {
-    "revision": "ec508c40b6266d62b6b80fa134f621a2",
+    "revision": "3e920ec9c6e9848553e411e136fe7f6b",
     "url": "/ventbox/index.html"
   }
 ];
