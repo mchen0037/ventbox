@@ -7,7 +7,7 @@ import { Grid } from "semantic-ui-react";
 import "./assets/postl.css";
 
 // const BACKEND_SERVER = "http://0.0.0.0:4000";
-const BACKEND_SERVER = "https://ventbox-backend.herokuapp.com/";
+const BACKEND_SERVER = "https://ventbox-backend.herokuapp.com";
 
 class App extends Component {
   constructor(props) {

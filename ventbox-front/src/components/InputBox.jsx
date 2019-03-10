@@ -3,7 +3,7 @@ import { Form } from "semantic-ui-react";
 import axios from "axios";
 
 // const BACKEND_SERVER = "http://0.0.0.0:4000";
-const BACKEND_SERVER = "https://ventbox-backend.herokuapp.com/";
+const BACKEND_SERVER = "https://ventbox-backend.herokuapp.com";
 
 class InputBox extends Component {
   constructor(props) {
