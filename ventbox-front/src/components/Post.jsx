@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import { Button, Card } from "semantic-ui-react";
-// import axios from 'axios';
-//
-// const BACKEND_SERVER = "http://0.0.0.0:4000";
 
 class Post extends Component {
   constructor(props) {

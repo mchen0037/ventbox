@@ -6,7 +6,8 @@ import axios from "axios";
 import { Grid } from "semantic-ui-react";
 import "./assets/postl.css";
 
-const BACKEND_SERVER = "http://0.0.0.0:4000";
+// const BACKEND_SERVER = "http://0.0.0.0:4000";
+const BACKEND_SERVER = "https://ventbox-backend.herokuapp.com/";
 
 // second grid.row - creating all post: by using map;
 // modify post-liked so it makes a call to the backend;
